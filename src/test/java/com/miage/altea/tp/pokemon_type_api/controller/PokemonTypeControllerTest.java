@@ -27,8 +27,8 @@ public class PokemonTypeControllerTest {
         pikachu.setName("pikachu");
         when(service.getPokemonTypeById(25)).thenReturn(pikachu);
 
-        var pokemon = controller.getPokemonType(25, null, null);
-        assertEquals("pikachu", pokemon.get(0).getName());
+        var pokemon = controller.getPokemonTypeById(25);
+        assertEquals("pikachu", pokemon.getName());
 
         verify(service).getPokemonTypeById(25);
     }
@@ -57,7 +57,7 @@ public class PokemonTypeControllerTest {
     @Test
     void getPokemonTypeFromId_shouldBeAnnotated() throws NoSuchMethodException {
         var getPokemonTypeFromId =
-                PokemonTypeController.class.getDeclaredMethod("getPokemonType", Integer.class, String.class, List.class);
+                PokemonTypeController.class.getDeclaredMethod("getPokemonTypeById", Integer.class);
         var getMapping = getPokemonTypeFromId.getAnnotation(GetMapping.class);
 
         assertNotNull(getMapping);

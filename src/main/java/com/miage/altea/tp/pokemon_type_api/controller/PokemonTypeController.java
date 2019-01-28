@@ -21,19 +21,19 @@ public class PokemonTypeController {
         this.pokemonTypeService = pokemonTypeService;
     }
 
-    @GetMapping("/")
-    public List<PokemonType> getPokemonType(@RequestParam(required = false) Integer id,
-                                               @RequestParam(required = false) String name,
-                                               @RequestParam(required = false) List<String> types){
-        if (id != null) {
-            return Collections.singletonList(this.pokemonTypeService.getPokemonTypeById(id));
-        } else if (name != null) {
-            return Collections.singletonList(this.pokemonTypeService.getPokemonTypeByName(name));
-        } else if (types != null && !types.isEmpty()) {
-            return this.pokemonTypeService.findPokemonsWithListOfTypes(types);
-        }
+    @GetMapping(value = "/", params = "id")
+    public PokemonType getPokemonTypeById(@RequestParam Integer id){
+        return this.pokemonTypeService.getPokemonTypeById(id);
+    }
 
-       return new ArrayList<>();
+    @GetMapping(value = "/", params = "name")
+    public PokemonType getPokemonTypeByName(@RequestParam String name){
+        return this.pokemonTypeService.getPokemonTypeByName(name);
+    }
+
+    @GetMapping(value = "/", params = "types")
+    public List<PokemonType> getPokemonTypeByTypes(@RequestParam List<String> types){
+        return this.pokemonTypeService.findPokemonsWithListOfTypes(types);
     }
 
     public List<PokemonType> getAllPokemonTypes() {

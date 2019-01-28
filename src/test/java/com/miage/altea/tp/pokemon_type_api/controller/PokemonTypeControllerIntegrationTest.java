@@ -33,7 +33,7 @@ public class PokemonTypeControllerIntegrationTest {
     public void getPokemon_withId25_ShouldReturnPikachu() throws Exception {
         var url = "http://localhost:" + port + "/pokemon-types/?id=25";
 
-        var pikachu = this.restTemplate.getForObject(url, PokemonType[].class)[0];
+        var pikachu = this.restTemplate.getForObject(url, PokemonType.class);
 
         assertNotNull(pikachu);
         assertEquals(25, pikachu.getId());
