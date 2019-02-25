@@ -20,7 +20,8 @@ public class PokemonTypeControllerTest {
     @Test
     void getPokemonType_shouldCallTheService() throws IOException {
         var service = mock(PokemonTypeService.class);
-        var controller = new PokemonTypeController(service);
+        var controller = new PokemonTypeController();
+        controller.setPokemonTypeService(service);
 
         var pikachu = new PokemonType();
         pikachu.setId(25);
@@ -36,7 +37,8 @@ public class PokemonTypeControllerTest {
     @Test
     void getAllPokemonTypes_shouldCallTheService(){
         var service = mock(PokemonTypeService.class);
-        var controller = new PokemonTypeController(service);
+        var controller = new PokemonTypeController();
+        controller.setPokemonTypeService(service);
 
         controller.getAllPokemonTypes();
 
