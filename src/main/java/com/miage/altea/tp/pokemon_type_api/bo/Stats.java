@@ -1,8 +1,5 @@
 package com.miage.altea.tp.pokemon_type_api.bo;
 
-import org.springframework.stereotype.Component;
-
-@Component("stats")
 public class Stats {
     private int speed;
     private int defense;

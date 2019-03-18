@@ -1,10 +1,7 @@
 package com.miage.altea.tp.pokemon_type_api.bo;
 
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 
-@Component("pokemonType")
 public class PokemonType {
     private int id;
     private int baseExperience;
